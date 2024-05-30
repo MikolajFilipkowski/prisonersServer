@@ -34,13 +34,13 @@ router.patch("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     const prisoner = req.body
-    if (!(prisoner.name && prisoner.sentance && prisoner.cause)) {
+    if (!(prisoner.name && prisoner.sentence && prisoner.cause)) {
         res.status(400).json("Lacking one of required fields: name, sentence, cause")
         return
     }
     await Prisoner.updateOne({_id:req.params.id}, {
         name: prisoner.name,
-        sentance: prisoner.sentance,
+        sentence: prisoner.sentence,
         cause: prisoner.cause
     }, { runValidators: true }).then((v) => {
         res.status(200).json(v)
