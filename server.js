@@ -8,6 +8,7 @@ const PORT = 8080
 
 const app = express()
 
+app.use(cors())
 
 main()
 
@@ -22,7 +23,6 @@ async function main() {
 
     app.use(express.json())
     app.use("/api/users",router)
-    app.use(cors())
 
     app.listen(PORT, () => {
         console.log(`Server listening on ${PORT}`)
